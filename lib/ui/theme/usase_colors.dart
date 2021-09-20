@@ -27,6 +27,7 @@ class UsaseColors{
   UsaseColors._();
 
   static MainColor mainColor = MainColor._();
+  static NumCircleColor numCircleColor = NumCircleColor._();
   static IconColor iconColor = IconColor._();
 }
 
@@ -34,6 +35,14 @@ class MainColor {
   MainColor._();
 
   Color blurGreen = Color(0x3310C600);
+  Color appBar = Color(0xFF159E5E);
+}
+
+class NumCircleColor {
+  NumCircleColor._();
+
+  Color bigOne = Color(0xFFFFFFFF);
+  Color smallOne = Color(0xFFFFFFFF);
 }
 
 class IconColor {

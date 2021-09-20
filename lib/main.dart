@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottery_hit/page/lottery_page.dart';
+import 'package:lottery_hit/page/record_page.dart';
+import 'package:lottery_hit/page/settings_page.dart';
 import 'package:lottery_hit/ui/media_query_size.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottery_hit/ui/theme/icons_util.dart';
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
-    isClickedLottery = false;
+    isClickedLottery = true;
     isClickedRecord = false;
     isClickedSettings = false;
 
@@ -75,10 +77,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         length: 3,
         child: Scaffold(
             body: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
               children: [
                 LotteryPage(),
-                Text('2'),
-                Text('3')
+                RecordPage(),
+                SettingsPage()
               ],
             ),
             bottomNavigationBar: Container(
@@ -93,42 +96,41 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
                 child: Padding(
                     padding: EdgeInsets.only(top: size.height * .02.h, bottom: size.height * .06.h),
                     child: TabBar(
-                        controller: tabController,
+                        onTap: (index) {
+                          switch (index) {
+                            case 0 :
+                              setState(() {
+                                isClickedLottery = true;
+                                isClickedRecord = false;
+                                isClickedSettings = false;
+                              });
+                              break;
+                            case 1 :
+                              setState(() {
+                                isClickedLottery = false;
+                                isClickedRecord = true;
+                                isClickedSettings = false;
+                              });
+                              break;
+                            case 2 :
+                              setState(() {
+                                isClickedLottery = false;
+                                isClickedRecord = false;
+                                isClickedSettings = true;
+                              });
+                              break;
+                          }
+                        },
                         indicatorColor: Colors.transparent,
                         tabs: [
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isClickedLottery = true;
-                                  isClickedRecord = false;
-                                  isClickedSettings = false;
-                                });
-                              },
-                              child: Tab(child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.lottery),
-                                  height: 50.h, color: isClickedLottery ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked))
+                          Tab(
+                            child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.lottery),
+                                height: 50.h, color: isClickedLottery ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked),
                           ),
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isClickedLottery = false;
-                                  isClickedRecord = true;
-                                  isClickedSettings = false;
-                                });
-                              },
-                              child: Tab(child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.record),
-                                  height: 32.h, color: isClickedRecord ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked))
-                          ),
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isClickedLottery = false;
-                                  isClickedRecord = false;
-                                  isClickedSettings = true;
-                                });
-                              },
-                              child: Tab(child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.settings),
-                                  height: 30.h, color: isClickedSettings ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked))
-                          )
+                          Tab(child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.record),
+                              height: 32.h, color: isClickedRecord ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked)),
+                          Tab(child: SvgPicture.asset(IconsUtil.iconsConvert.getSVG(IconsUtil.tabBarIcon.settings),
+                              height: 30.h, color: isClickedSettings ? UsaseColors.iconColor.clicked : UsaseColors.iconColor.unClicked))
                         ]
                     )
                 )
