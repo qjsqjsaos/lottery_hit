@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lottery_hit/ui/media_query_size.dart';
+import 'package:lottery_hit/themes/media_query_size.dart';
 
 class SettingsPage extends StatefulWidget {
 
@@ -10,11 +10,6 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   MediaQuerySize mediaQuerySize = MediaQuerySize();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

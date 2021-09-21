@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lottery_hit/ui/media_query_size.dart';
+import 'package:lottery_hit/themes/media_query_size.dart';
 
 class RecordPage extends StatefulWidget {
 

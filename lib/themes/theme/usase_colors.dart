@@ -35,6 +35,12 @@ class MainColor {
   MainColor._();
 
   Color blurGreen = Color(0x3310C600);
+  Color luckyBtnBegin = Color(0xA6FF0000);
+  Color luckyBtnEnd = Color(0xA6C94646);
+  Color luckyBtnBlur = Color(0x40C94646);
+  Color selfBtnBegin = Color(0xA60014FF);
+  Color selfBtnEnd = Color(0xA64966DB);
+  Color selfBtnBlur = Color(0x400014FF);
   Color appBar = Color(0xFF159E5E);
 }
 
